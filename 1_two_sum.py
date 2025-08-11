@@ -17,8 +17,9 @@ class Solution:
 
         for i in range(len(nums)):
             difference = target - nums[i]
-            if hash_set.get(difference):
+            if hash_set.get(difference) is not None:
                 return [i, hash_set[difference]]
             
             hash_set[nums[i]] = i
+        
         

@@ -1,0 +1,16 @@
+# Solution 1: Using sorting hashmaps for grouping anagrams
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = {}
+        
+        for str in strs:
+            # sort the string and use it as a key
+            sorted_string = "".join(sorted(str))
+            # if the sorted string is not in the result, add it as a list
+            if not result.get(sorted_string):
+                result[sorted_string] = [str]   # since the result is a list of lists, every value should be a list
+            # if it is already there, append the original string
+            else:
+                result[sorted_string].append(str)
+        
+        return list(result.values())
