@@ -59,3 +59,9 @@ class Solution:
         # Hence indicating that we should return a false.
         return False
          
+
+# Solution 4: Using Python Sets ...
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums)) < len(nums)
+        
