@@ -63,5 +63,6 @@ class Solution:
 # Solution 4: Using Python Sets ...
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
+        # convert the list to a set and compare the lengths of both the list and the set.
         return len(set(nums)) < len(nums)
         
