@@ -10,4 +10,15 @@ class Solution:
                     return [i, j]
                 
 
-# Soltuion 2: 
+# Soltuion 2: Using HashMaps ...
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_set = {}
+
+        for i in range(len(nums)):
+            difference = target - nums[i]
+            if hash_set.get(difference):
+                return [i, hash_set[difference]]
+            
+            hash_set[nums[i]] = i
+        
