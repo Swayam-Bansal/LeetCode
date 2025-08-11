@@ -1,4 +1,4 @@
-# Solution 1: Using sorting hashmaps for grouping anagrams
+# Solution 1: Using sorting hashmaps for grouping anagrams, we use the sorted version of each string as a key in a dictionary.
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         result = {}
@@ -14,3 +14,38 @@ class Solution:
                 result[sorted_string].append(str)
         
         return list(result.values())
+    
+# Time and space complexity for Sol 1:
+    # sorting each string takes O(n logn) time, where n is the length of the longest string
+    # we have m number of strings, so the overall time complexity for the whole sorting step is O(m * n logn)
+    # time retirval for the hashmap is O(1) on anerrage, so the total time compelxity for the solution is O(m * n logn)
+
+    # spcae complexity is O(m * n) since we are going to be storing all the stings in the result dictionary, where m is the number of strings and n is the length of the longest string.
+
+
+
+
+# Solution 2: Using the number of occurrences of each character as a key
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = {}
+        
+        for str in strs:
+            count = [0] * 26
+            for char in str:
+                count[ord(char) - ord('a')] += 1
+            
+            if not result.get(tuple(count)):
+                result[tuple(count)] = [str]
+
+            else:
+                result[tuple(count)].append(str)
+        
+        return list(result.values())
+
+# Time and space complexity for Sol 2:
+    # counting the number of occurrences of each character takes O(n) time, where n is the length of the longest string
+    # we have m number of strings, so the overall time complexity for the whole counting step is O(m * n)
+    # time retrieval for the hashmap is O(1) on average, so the total time complexity for the solution is O(m * n)
+
+    # space complexity is O(m * n) since we are going to be storing all the strings in the result dictionary, where m is the number of strings and n is the length of the longest string.
